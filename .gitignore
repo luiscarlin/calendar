@@ -1,5 +1,15 @@
+# client
+build/
+
+# server
+dist/
+
+# databse
+data/
+pgadmin/
+
+# common
 node_modules/
 yarn-error.log
 .env
-data/
-pgadmin/
+coverage/
