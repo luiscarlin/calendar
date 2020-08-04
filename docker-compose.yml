@@ -1,14 +1,15 @@
-version: "3.5"
+version: '3.5'
 
 services:
-  postgres:
-    image: postgres
+  database:
+    build: database
     ports:
-      - "5432:5432"
+      - 5432:5432
     environment:
-      POSTGRES_USER: me
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: calendar
+      DB_USER: me
+      DB_PASSWORD: 1234
+      DB_NAME: calendar
+      POSTGRES_PASSWORD: postgres
     volumes:
       - ./database/data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -16,7 +17,7 @@ services:
   pgAdmin:
     image: dpage/pgadmin4
     ports:
-      - "8000:80"
+      - '8000:80'
     environment:
       PGADMIN_DEFAULT_EMAIL: 1234@admin.com
       PGADMIN_DEFAULT_PASSWORD: 1234
