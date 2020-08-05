@@ -31,3 +31,12 @@ psql -v ON_ERROR_STOP=1 --username $DB_USER --dbname $DB_NAME <<-EOSQL
     date_deleted TIMESTAMP
   );
 EOSQL
+
+psql -v ON_ERROR_STOP=1 --username $DB_USER --dbname $DB_NAME <<-EOSQL
+  INSERT INTO public.user VALUES
+  ('luis', 'carlon', '1999-01-08 04:05:06', '1999-01-08 04:05:06', '1999-01-08 04:05:06'),
+  ('jim', 'jimenez', '1999-01-08 04:05:06', '1999-01-08 04:05:06', '1999-01-08 04:05:06'),
+  ('hey', 'you', '1999-01-08 04:05:06', '1999-01-08 04:05:06', '1999-01-08 04:05:06');
+EOSQL
+
+
