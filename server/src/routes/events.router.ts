@@ -4,7 +4,7 @@ let eventsRouter = Router();
 
 eventsRouter.get('/', async (req, res) => {
   console.log('hello');
-  return res.send({ hello: 'events' });
+  return res.send({ hello: 'there' });
 });
 
 export { eventsRouter };
