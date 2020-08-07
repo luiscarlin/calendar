@@ -1,5 +1,5 @@
-import { User } from '../models/user';
+import { queryAllUsers } from '../repository/users.repository';
 
-export const getAllUsersController = () => {
-  return [{ id: 1, first_name: 'luis', last_name: 'carlon' } as User];
+export const getAllUsersController = async () => {
+  return await queryAllUsers();
 };
