@@ -19,7 +19,7 @@ psql -v ON_ERROR_STOP=1 --username $DB_USER --dbname $DB_NAME <<-EOSQL
 EOSQL
 
 psql -v ON_ERROR_STOP=1 --username $DB_USER --dbname $DB_NAME <<-EOSQL
-  CREATE TABLE event (
+  CREATE TABLE public.event (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES "user"(id),
     title VARCHAR NOT NULL,
@@ -34,9 +34,16 @@ EOSQL
 
 psql -v ON_ERROR_STOP=1 --username $DB_USER --dbname $DB_NAME <<-EOSQL
   INSERT INTO public.user VALUES
-  (1, 'luis', 'carlon', '1999-01-08 04:05:06', '1999-01-08 04:05:06', '1999-01-08 04:05:06'),
-  (2, 'jim', 'jimenez', '1999-01-08 04:05:06', '1999-01-08 04:05:06', '1999-01-08 04:05:06'),
-  (3, 'hey', 'you', '1999-01-08 04:05:06', '1999-01-08 04:05:06', '1999-01-08 04:05:06');
+  (1, 'Lucho', 'Carlone', now(), now(), null),
+  (2, 'Jim', 'Jimenez', now(), now(), null),
+  (3, 'Sebastian', 'Wacawaca', now(), now(), null);
 EOSQL
 
 
+psql -v ON_ERROR_STOP=1 --username $DB_USER --dbname $DB_NAME <<-EOSQL
+  INSERT INTO public.event VALUES
+  (1, 1, 'Run', 'Go run 5K with frieds', now(), now() + interval '1 hour', now(), now(), null),
+  (2, 2, 'Soccer', 'Go to the park and play some soccer with friends', now() + interval '1 hour', now() + interval '2 hour', now(), now(), null),
+  (3, 3, 'Tennis', 'Play Tennis', now() + interval '3 hour', now() + interval '4 hour', now(), now(), null),
+  (4, 3, 'Ping Ping', 'Play Ping Pong', now() + interval '5 hour', now() + interval '6 hour', now(), now(), null);
+EOSQL
