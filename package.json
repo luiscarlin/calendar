@@ -1,8 +1,16 @@
 {
   "name": "calendar",
   "private": true,
-  "workspaces": [
-    "client",
-    "server"
-  ]
+  "workspaces": {
+    "packages": [
+      "client",
+      "server"
+    ],
+    "nohoist": [
+      "**"
+    ]
+  },
+  "scripts": {
+    "start": "rm -rf ./database/data ./database/pgadmin && docker-compose up --build"
+  }
 }
